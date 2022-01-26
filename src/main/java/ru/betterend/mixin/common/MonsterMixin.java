@@ -17,15 +17,15 @@ import java.util.Random;
 
 @Mixin(Monster.class)
 public class MonsterMixin {
-	@Inject(method = "checkMonsterSpawnRules", at = @At(value = "RETURN"), cancellable = true)
-	private static void be_checkMonsterSpawnRules(EntityType<? extends Monster> type, ServerLevelAccessor serverWorldAccess, MobSpawnType spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
-		boolean canSpawn = info.getReturnValue();
-		if (canSpawn && spawnReason == MobSpawnType.NATURAL && type == EntityType.ENDERMAN) {
-			AABB box = new AABB(pos).inflate(16);
-			List<EnderMan> entities = serverWorldAccess.getEntitiesOfClass(EnderMan.class, box, (entity) -> {
-				return true;
-			});
-			info.setReturnValue(entities.size() < 6);
-		}
-	}
+//	@Inject(method = "checkMonsterSpawnRules", at = @At(value = "RETURN"), cancellable = true)
+//	private static void be_checkMonsterSpawnRules(EntityType<? extends Monster> type, ServerLevelAccessor serverWorldAccess, MobSpawnType spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
+//		boolean canSpawn = info.getReturnValue();
+//		if (canSpawn && spawnReason == MobSpawnType.NATURAL && type == EntityType.ENDERMAN) {
+//			AABB box = new AABB(pos).inflate(16);
+//			List<EnderMan> entities = serverWorldAccess.getEntitiesOfClass(EnderMan.class, box, (entity) -> {
+//				return true;
+//			});
+//			info.setReturnValue(entities.size() < 6);
+//		}
+//	}
 }
